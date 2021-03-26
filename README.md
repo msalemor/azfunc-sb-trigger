@@ -1,4 +1,4 @@
-# Azure Function - Service Bus Trigger
+# .Net Core Azure Function - Service Bus Trigger
 
 
 ## Testing
