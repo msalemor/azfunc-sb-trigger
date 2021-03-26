@@ -204,5 +204,6 @@ namespace sbfunc1
 
 ## Reference
 
+- [Azure Function Service Bus trigger](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-service-bus-trigger?tabs=csharp)
 - [Guidance and recommendations](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-performance-improvements?tabs=net-standard-sdk-2)
 - [High availability](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-outages-disasters)
