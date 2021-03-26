@@ -20,19 +20,20 @@ provider "azurerm" {
 }
 
 var location = "eastus"
-var rgName = "demonamespace"
-var simpleQueue = "simplequeue"
-var robustQueue = "robustqueue"
+var rg_name = "rg-sb-eus-demo"
+var sb_namespace_name = "sbdemo"
+var simple_queue_name = "simplequeue"
+var robust_queue_name = "robustqueue"
 
 resource "azurerm_resource_group" "rg" {
-  name     = var.rgName
+  name     = var.rg_name
   location = var.location
 }
 
 resource "azurerm_servicebus_namespace" "sbnamespace" {
-  name                = "tfex-servicebus-namespace"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  name                = var.sb_namespace_name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
   sku                 = "Standard"
 
   tags = {
@@ -40,8 +41,8 @@ resource "azurerm_servicebus_namespace" "sbnamespace" {
   }
 }
 
-resource "azurerm_servicebus_queue" "example" {
-  name                = var.simpleQueue
+resource "azurerm_servicebus_queue" "simple" {
+  name                = var.simple_queue_name
   resource_group_name = azurerm_resource_group.rg.name
   namespace_name      = azurerm_servicebus_namespace.sbnamespace.name
   default_message_ttl = "00:30:00"
@@ -49,8 +50,8 @@ resource "azurerm_servicebus_queue" "example" {
   # enable_partitioning = true
 }
 
-resource "azurerm_servicebus_queue" "example" {
-  name                = var.robutQueue
+resource "azurerm_servicebus_queue" "robust" {
+  name                = var.robust_queue_name
   resource_group_name = azurerm_resource_group.rg.name
   namespace_name      = azurerm_servicebus_namespace.sbnamespace.name
   dead_lettering_on_message_expiration = true
