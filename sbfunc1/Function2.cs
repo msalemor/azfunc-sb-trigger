@@ -1,12 +1,11 @@
-using System;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.ServiceBus;
 using Microsoft.Azure.ServiceBus.Core;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Text;
+using System.Threading.Tasks;
 
 
 namespace sbfunc1
