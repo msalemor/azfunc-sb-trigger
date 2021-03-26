@@ -12,6 +12,52 @@
 - Add the local.settings.json and modify the settings
 - Modify the host.json file
 
+## Terraform script
+
+```terraform
+provider "azurerm" {
+  features {}
+}
+
+var location = "eastus"
+var rgName = "demonamespace"
+var simpleQueue = "simplequeue"
+var robustQueue = "robustqueue"
+
+resource "azurerm_resource_group" "rg" {
+  name     = var.rgName
+  location = var.location
+}
+
+resource "azurerm_servicebus_namespace" "sbnamespace" {
+  name                = "tfex-servicebus-namespace"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+  sku                 = "Standard"
+
+  tags = {
+    source = "terraform"
+  }
+}
+
+resource "azurerm_servicebus_queue" "example" {
+  name                = var.simpleQueue
+  resource_group_name = azurerm_resource_group.rg.name
+  namespace_name      = azurerm_servicebus_namespace.sbnamespace.name
+  default_message_ttl = "00:30:00"
+  dead_lettering_on_message_expiration = true
+  # enable_partitioning = true
+}
+
+resource "azurerm_servicebus_queue" "example" {
+  name                = var.robutQueue
+  resource_group_name = azurerm_resource_group.rg.name
+  namespace_name      = azurerm_servicebus_namespace.sbnamespace.name
+  dead_lettering_on_message_expiration = true
+  # enable_partitioning = true
+}
+```
+
 ## Function 1 - Simple Function
 
 
