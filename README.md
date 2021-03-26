@@ -1,9 +1,8 @@
-# Azure Function 
-## Service Bus Trigger
+# Azure Function - Service Bus Trigger
 
 ## local.settings.json file
 
-> Note: This file is not checked in by default
+> Note: This file contains the local settings and is not checked in by default. These settings need to be deployed as application settings.
 
 ```json
 {
@@ -18,7 +17,7 @@
 
 ## Modified host.json file
 
-> For the second Function2, autoclote is set to false. This gives control over what can be completed, abandoned, and dead letter.
+> For the second Function2, autocomplete is set to false. This gives control over what can be completed, abandoned, and dead letter.
 
 ```json
 {
@@ -41,6 +40,12 @@
 
 ## Function 1 - Simple Function
 
+
+Features:
+
+- Message is marked completed when the function finishes execution
+- If an error is thrown, the function retries
+- After certain number of retries, the message deadletters
 
 ```c#
 using Microsoft.Azure.WebJobs;
@@ -66,6 +71,15 @@ namespace sbfunc1
 
 
 ## Function 2 - Robust Function
+
+
+Features:
+
+- Access to the message body and properties
+- Access to the lock tocken
+- Ability to deadleatter, abandon and complete a queue or topic
+- Access to configuration
+
 
 
 ```c#
