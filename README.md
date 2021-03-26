@@ -1,5 +1,17 @@
 # Azure Function - Service Bus Trigger
 
+
+## Testing
+
+- Create an Azure Service Bus Namespace
+- Create two queues called:
+  - simplequeue (1GB, 1 Hour TTL, auto deadletter)
+  - robustqueue (1GB, 1 Hour TTL, auto deadletter)
+- Create a shared access key for Listen only
+- Clone this repo
+- Add the local.settings.json and modify the settings
+- Modify the host.json file
+
 ## Function 1 - Simple Function
 
 
