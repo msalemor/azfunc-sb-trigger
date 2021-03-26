@@ -116,7 +116,7 @@ namespace sbfunc1
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "SBConnection": "<ADD PRIMERY ENDPOINT>"
+    "SBConnection": "<ADD CONNECTION STRING CREDENTIALS>"
   }
 }
 ```
