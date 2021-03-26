@@ -17,10 +17,10 @@
 
 Features:
 
-- Message is marked completed when the funcion executes
+- Message is marked completed when the funcion finishes executing
 - If an exception is thrown, the message is abandoned and the function retries the message
-- After certain number of retries, the message deadletters
-- By default, messages need to complete within 5 minutes, but this can be modfied
+- After certain number of retries, the message automatically deadletters
+- By default, messages need to complete within 5 minutes, but this can be configured
 
 ```c#
 using Microsoft.Azure.WebJobs;
@@ -54,7 +54,7 @@ Features:
 - Access to the lock tocken
 - Ability to deadleatter, abandon and complete a queue or topic
 - Access to configuration
-- By default, messages need to complete within 5 minutes, but this can be modfied
+- By default, messages need to complete within 5 minutes, but this can be configured
 
 
 ```c#
