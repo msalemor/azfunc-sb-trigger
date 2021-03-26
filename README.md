@@ -41,7 +41,7 @@ resource "azurerm_servicebus_namespace" "sbnamespace" {
   }
 }
 
-resource "azurerm_servicebus_queue" "simple" {
+resource "azurerm_servicebus_queue" "simplesb" {
   name                = var.simple_queue_name
   resource_group_name = azurerm_resource_group.rg.name
   namespace_name      = azurerm_servicebus_namespace.sbnamespace.name
@@ -50,7 +50,7 @@ resource "azurerm_servicebus_queue" "simple" {
   # enable_partitioning = true
 }
 
-resource "azurerm_servicebus_queue" "robust" {
+resource "azurerm_servicebus_queue" "robustsb" {
   name                = var.robust_queue_name
   resource_group_name = azurerm_resource_group.rg.name
   namespace_name      = azurerm_servicebus_namespace.sbnamespace.name
