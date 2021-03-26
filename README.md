@@ -1,51 +1,14 @@
 # Azure Function - Service Bus Trigger
 
-## local.settings.json file
-
-> Note: This file contains the local settings and is not checked in by default. These settings need to be deployed as application settings.
-
-```json
-{
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "SBConnection": "<ADD PRIMERY ENDPOINT>"
-  }
-}
-```
-
-## Modified host.json file
-
-> For the second Function2, autocomplete is set to false. This gives control over what can be completed, abandoned, and dead letter.
-
-```json
-{
-  "version": "2.0",
-  "logging": {
-    "applicationInsights": {
-      "samplingExcludedTypes": "Request",
-      "samplingSettings": {
-        "isEnabled": true
-      }
-    }
-  },
-  "extensions": {
-    "serviceBus": {
-      "messageHandlerOptions": { "autoComplete": false }
-    }
-  }
-}
-```
-
 ## Function 1 - Simple Function
 
 
 Features:
 
-- Message is marked completed when the function finishes execution
-- If an error is thrown, the function retries
+- Message is marked completed when the funcion executes
+- If an exception is thrown, the message is abandoned and the function retries the message
 - After certain number of retries, the message deadletters
+- By default, messages need to complete within 5 minutes, but this can be modfied
 
 ```c#
 using Microsoft.Azure.WebJobs;
@@ -79,7 +42,7 @@ Features:
 - Access to the lock tocken
 - Ability to deadleatter, abandon and complete a queue or topic
 - Access to configuration
-
+- By default, messages need to complete within 5 minutes, but this can be modfied
 
 
 ```c#
@@ -141,4 +104,42 @@ namespace sbfunc1
     }
 }
 
+```
+
+## local.settings.json file
+
+> Note: This file contains the local settings and is not checked in by default. These settings need to be deployed as application settings.
+
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "SBConnection": "<ADD PRIMERY ENDPOINT>"
+  }
+}
+```
+
+## Modified host.json file
+
+> For the second Function2, autocomplete is set to false. This gives control over what can be completed, abandoned, and dead letter.
+
+```json
+{
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingExcludedTypes": "Request",
+      "samplingSettings": {
+        "isEnabled": true
+      }
+    }
+  },
+  "extensions": {
+    "serviceBus": {
+      "messageHandlerOptions": { "autoComplete": false }
+    }
+  }
+}
 ```
