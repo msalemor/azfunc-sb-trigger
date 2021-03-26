@@ -28,8 +28,8 @@ namespace sbfunc1
                 .AddEnvironmentVariables()
                 .Build();
 
-            // Do some work
-            await Task.Delay(1000);
+            // You can use external libraries
+            await Shared.Library.Work.DoWorkAsync();
 
             var rnd = (new Random()).Next(1, 3);
 
