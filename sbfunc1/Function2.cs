@@ -14,7 +14,7 @@ namespace sbfunc1
     public static class Function2
     {
 
-        // , IsSessionsEnabled =true
+        // IsSessionsEnabled = false is not needed, create a queue that supports sessions and set it to true to process messages in order
         [FunctionName("Function2")]
         public static async Task Run([ServiceBusTrigger("robustqueue", Connection = "SBConnectionString", IsSessionsEnabled = false)] Message myQueueItem, ILogger log, MessageReceiver messageReceiver, ExecutionContext context)
         {
