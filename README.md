@@ -201,3 +201,8 @@ namespace sbfunc1
   }
 }
 ```
+
+## Reference
+
+- [Guidance and recommendations](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-performance-improvements?tabs=net-standard-sdk-2)
+- [High availability](https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-outages-disasters)
